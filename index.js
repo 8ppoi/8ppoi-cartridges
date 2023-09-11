@@ -1,8 +1,8 @@
 const userNames = {
 	ExamplesColor: '8ppoi',
+	ExamplesControllers: '8ppoi',
 	ExamplesGraphicMap: '8ppoi',
 	ExamplesImageMap: '8ppoi',
-	ExamplesInput: '8ppoi',
 	ExamplesQueue: '8ppoi',
 	ExamplesSound: '8ppoi',
 	ExamplesSprite: '8ppoi',
