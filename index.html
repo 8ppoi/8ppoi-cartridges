@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>8ppoi</title>
+		<link rel="icon" href="./favicon.ico" sizes="any">
+		<link href="./bootstrap/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<body>
+
+<div id="uiContainer"></div>
+
+		<div class="container">
+
+<script type="module">
+import { System } from './src/System.js';
+
+await System.start(location.href.replace(/.*\//, ''));
+</script>
+
+		</div>
+		<script src="./bootstrap/bootstrap.bundle.min.js"></script>
+	</body>
+</html>
