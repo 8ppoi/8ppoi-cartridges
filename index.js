@@ -8,7 +8,6 @@ const userNames = {
 	ExamplesSprite: '8ppoi',
 	ExamplesState: '8ppoi',
 	ExamplesTextMap: '8ppoi',
-	WelcomeTo8ppoi: '8ppoi',
 };
 
 import { render } from "https://deno.land/x/gfm/mod.ts";
@@ -35,10 +34,15 @@ router.get('/:cartridgeName', async context => {
 	const cartridgeName = context.params.cartridgeName.replace(/#.*/, '');
 	const decoder = new TextDecoder('utf-8');
 	let decoded = decoder.decode(Deno.readFileSync('./index.html'));
-	decoded += decoder.decode(Deno.readFileSync('./download.html'))
-		.replace(/#repositoryUrl#/, `https://github.com/${userNames[cartridgeName]}/${cartridgeName}`)
-		.replace(/#download#/, `https://github.com/${userNames[cartridgeName]}/${cartridgeName}/archive/refs/heads/master.zip`)
-	;
+	if (cartridgeName !== 'WelcomeTo8ppoi') {
+		decoded += decoder.decode(Deno.readFileSync('./download.html'))
+			.replace(/#repositoryUrl#/, `https://github.com/${userNames[cartridgeName]}/${cartridgeName}`)
+			.replace(/#download#/, `https://github.com/${userNames[cartridgeName]}/${cartridgeName}/archive/refs/heads/master.zip`)
+		;
+	}
+	else {
+		decoded += '<div class="container text-end">This cartridge is included in <a href="https://github.com/8ppoi/8ppoi-dev">8ppoi-dev</a>.</div>';
+	}
 	decoded += decoder.decode(Deno.readFileSync('./description.html')).replace(/#description#/, render(decoder.decode(Deno.readFileSync(`./8ppoi-dev/src/cartridges/${cartridgeName}/README.md`))));
 	context.response.body = decoded;
 })
