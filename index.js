@@ -41,7 +41,7 @@ router.get('/:cartridgeName', async context => {
 		;
 	}
 	else {
-		decoded += '<div class="container text-end">This cartridge is included in <a href="https://github.com/8ppoi/8ppoi-dev">8ppoi-dev</a>.</div>';
+		decoded += '<div class="container text-end">This cartridge is included in <a href="https://github.com/8ppoi/8ppoi-dev">8ppoi-dev</a>. <a href="https://github.com/8ppoi/8ppoi-dev/archive/refs/heads/master.zip">Download 8ppoi-dev</a></div>';
 	}
 	decoded += decoder.decode(Deno.readFileSync('./description.html')).replace(/#description#/, render(decoder.decode(Deno.readFileSync(`./8ppoi-dev/src/cartridges/${cartridgeName}/README.md`))));
 	context.response.body = decoded;
